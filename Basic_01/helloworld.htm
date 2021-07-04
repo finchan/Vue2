@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        {{10+20}}
+        {{30>10?'aaa':'bbb'}}
+        <p>{{myname}}--{{myhtml}} Text</p>
+
+        <!--指令-->
+        <div v-html="myhtml"></div>
+
+        <div v-show="isShow">动态显示和隐藏</div>
+
+        <div v-if="isCreated">动态创建和删除</div>
+        <button @click="handleClick()">Click</button>
+
+        <!--以下是动态操作class的三种方法！！！-->
+        <div :class="isActive? 'red' : 'yellow'">我是动态绑定class - ?: - 三目运算符</div>
+        <!--class="a b" 只需要控制ab的T/F-->
+        <!--对象这两个属性通过get/set来实现，但是如果你动态后期增加一个属性，这个属性不会增加get/set进行动态拦截-->
+        <div :class="classobj">我是动态绑定class - 对象</div> 
+        <!--通过数组的pop()和push()进行动态操作，或者数组的任何一种可以修改的方法都可以动态改变，这是和对象的区别-->
+        <div :class="classarr">我是动态绑定class - 数组写法</div> 
+
+        <!--动态改变内嵌style的样式-->
+        <div :style="'background:'+ (isActive? 'red' : 'yellow')">动态改变内联style - 三目写法</div>
+        <div :style="styleobj">动态改变内联style - 对象</div>
+        <div :style="stylearr">动态改变内联style - 数组</div>
+    </div>
+
+
+    <div>
+        {{10+20}}
+    </div>
+
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        
+    </style>
+
+    <script>
+        var vue = new Vue({
+            el: "#box",
+            data:{
+                myname:"Tasche",
+                myhtml: "<h1>h1</h1>",
+                isShow: true,
+                isCreated: true,
+                isActive: true, 
+                classobj: {
+                    a:true, 
+                    b:true
+                    // a, b 都是class名字
+                },
+                classarr: ["a", "b"],
+                styleobj: {backgroundColor: "blue"}, //这些style是JavaScript Style对象， 同样它也不适用于动态添加属性
+                stylearr: [{fontSize:"30px"}, {backgroundColor: "red"}] //支持array的各种方法，动态生成（get/set) //vue.stylearr.push({fontWeight: "bold"});
+            },
+            methods:{
+                handleClick(){
+                    this.isActive = !this.isActive;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
