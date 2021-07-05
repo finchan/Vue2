@@ -24,7 +24,7 @@
         <!--以下是动态操作class的三种方法！！！-->
         <div :class="isActive? 'red' : 'yellow'">我是动态绑定class - ?: - 三目运算符</div>
         <!--class="a b" 只需要控制ab的T/F-->
-        <!--对象这两个属性通过get/set来实现，但是如果你动态后期增加一个属性，这个属性不会增加get/set进行动态拦截-->
+        <!--对象这两个属性通过get/set来实现，但是如果你动态后期增加一个属性，这个属性不会增加get/set进行动态拦截,可通过vue.set()方法来处理-->
         <div :class="classobj">我是动态绑定class - 对象</div> 
         <!--通过数组的pop()和push()进行动态操作，或者数组的任何一种可以修改的方法都可以动态改变，这是和对象的区别-->
         <div :class="classarr">我是动态绑定class - 数组写法</div> 
@@ -33,7 +33,55 @@
         <div :style="'background:'+ (isActive? 'red' : 'yellow')">动态改变内联style - 三目写法</div>
         <div :style="styleobj">动态改变内联style - 对象</div>
         <div :style="stylearr">动态改变内联style - 数组</div>
+
+        <!--动态创建层或者删除层-->
+        <!--v-if,v-else-if, v-else-->
+        <button @click="dynamicAddOrDeleteDiv()">Dynamic Add or Delete Div</button>
+        <div v-if="isCreatedDiv">动态创建层</div>
+        <div v-else>动态删除层</div>
+
+        <button @click="addItems()">Add Items</button>
+        <ul v-if="dataList.length">
+            <li v-for="data in dataList">
+                {{data}}
+            </li>
+        </ul>
+        <div v-else>空空如也</div>
+
+        <!--3选1-->
+        <div v-if="which===1">
+            111
+        </div>
+        <div v-else-if="which===2">
+            222
+        </div>
+        <div v-else>
+            333
+        </div>
+
+        <!--v-for - 遍历数组及对象-->
+        <ul>
+            <li v-for="data in dataList2">{{data}}</li>
+        </ul>
+        <ul>
+            <li v-for="(data, index) in dataList2" key="data.id">
+                {{data}} - {{index}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="prop in obj">
+                {{prop}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(data, key) in obj">
+                {{data}} - {{key}}
+            </li>
+        </ul>
     </div>
+
+
+
 
 
     <div>
@@ -66,11 +114,27 @@
                 },
                 classarr: ["a", "b"],
                 styleobj: {backgroundColor: "blue"}, //这些style是JavaScript Style对象， 同样它也不适用于动态添加属性
-                stylearr: [{fontSize:"30px"}, {backgroundColor: "red"}] //支持array的各种方法，动态生成（get/set) //vue.stylearr.push({fontWeight: "bold"});
+                stylearr: [{fontSize:"30px"}, {backgroundColor: "red"}], //支持array的各种方法，动态生成（get/set) //vue.stylearr.push({fontWeight: "bold"});
+                isCreatedDiv: false,
+                isChosen:false,
+                dataList:[], 
+                which:2,
+                obj: {
+                    name:'Tasche',
+                    age: 38,
+                    location: 'Dalian'
+                },
+                dataList2: [1,2,3,4]
             },
             methods:{
                 handleClick(){
                     this.isActive = !this.isActive;
+                },
+                dynamicAddOrDeleteDiv(){
+                    this.isCreatedDiv = !this.isCreatedDiv;
+                }, 
+                addItems(){
+                    this.dataList = [1,2,3];
                 }
             }
         });
