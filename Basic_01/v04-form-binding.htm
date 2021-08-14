@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        单行文本绑定 - <input type="text" v-model="mytext"/> - {{mytext}}
+        <br/>
+        多行文本绑定 - <textarea v-model="mytext2"></textarea> - {{mytext2}}
+        <br/>
+        单行多选框绑定 - <input type="checkbox" v-model="isChecked"/> 记录客户
+        <br/>
+        多个多选框绑定 - 
+        <input type="checkbox" v-model="checkGroup" value="A"/> A
+        <input type="checkbox" v-model="checkGroup" value="B"/> B
+        <input type="checkbox" v-model="checkGroup" value="C"/> C
+        <input type="checkbox" v-model="checkGroup" value="D"/> D
+        <br/>
+        {{checkGroup}}
+        <br/>
+        单选框绑定 - 
+        <input type="radio" v-model="picked" value="A"/> A
+        <input type="radio" v-model="picked" value="B"/> B
+        <input type="radio" v-model="picked" value="C"/> C
+        <input type="radio" v-model="picked" value="D"/> D
+        <br/>
+        {{picked}}
+        <br/>
+        v-model.lazy属性<br/>
+        <input type="text" v-model.lazy="lazyVModel"/> {{lazyVModel}}
+        <br/>
+        v-model.number属性 - BUG如果字符开始，该属性失效，可以用type-number替换<br/>
+        <input type="text" v-model.number="numberVModel"/>{{numberVModel}}<br/>
+        <input type="number" v-model="numberText"/>{{numberText}}<br/>
+        v-model.trim属性<br/>
+        <input type="text" v-model.trim="textTrim"/>|{{textTrim}}|
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                mytext:"",
+                mytext2:"",
+                isChecked:true,
+                checkGroup:[],
+                picked:"",
+                lazyVModel:"",
+                numberVModel:0,
+                numberText:0,
+                textTrim:""
+            }
+        });
+    </script>
+</body>
+</html>

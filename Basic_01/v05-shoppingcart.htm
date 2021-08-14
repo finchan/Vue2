@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <input type="checkbox" v-model="isAllChecked" @change="handleChange"/> - 全选
+        <ul>
+            <li v-for="item in dataList">
+                <input type="checkbox" v-model="checkGroup" :value="item" @change="handleLIChange"/> {{item}} 
+                <button @click="item.number++">Add</button>
+                 {{item.number}}
+                <button @click="deleteItem(item)">Delete</button>
+            </li>
+        </ul>
+        {{checkGroup}}<br/>
+        总金额：{{calculateSum()}}
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#box",
+            data:{
+                dataList:[
+                    {
+                        name:'Prod1',
+                        price: 10,
+                        number:1,
+                        id:"1"
+                    },
+                    {
+                        name:'Prod2',
+                        price: 20,
+                        number:2,
+                        id:"2"
+                    },
+                    {
+                        name:'Prod3',
+                        price: 30,
+                        number:3,
+                        id:"3"
+                    }
+                ], 
+                checkGroup:[],
+                isAllChecked:false
+            },
+            methods:{
+                //每次状态（data）发生变化，方法会被自动调用
+                calculateSum (){
+                    var sum = 0;
+                    for(var i in this.checkGroup) {
+                        sum+=this.checkGroup[i].number*this.checkGroup[i].price;
+                    }
+                    return sum;
+                },
+                handleChange () {
+                    if(this.isAllChecked) {
+                        this.checkGroup = this.dataList;
+                    } else {
+                        this.checkGroup = [];
+                    }
+                },
+                handleLIChange (){
+                    if(this.checkGroup.length === this.dataList.length ){
+                        this.isAllChecked = true;
+                    } else {
+                        this.isAllChecked = false;
+                    }
+                },
+                deleteItem(item) {
+                    if(item.number > 1) {
+                        item.number--;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
