@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        第一次调用<br/>
+        Methods: {{getMyNameMethod()}}<br/>
+        Computed: {{getMyName}}<br/>
+        第二次调用<br/>
+        Methods: {{getMyNameMethod()}}<br/>
+        Computed: {{getMyName}}<br/>
+        <br/>
+        <p>
+            模糊查询:<br/>
+            <input type="text" v-model="mytext">
+            <ul>
+                <li v-for="data in dataListComputed">{{data}}</li>
+            </ul>
+        </p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data:{
+                myname:'xiaoMing',
+                mytext:'',
+                datalist: ["sa", "bf", "cf", "ds", "ea"]
+            },
+            methods: {
+                getMyNameMethod() {
+                    console.log("Method - invoked");
+                    return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1);
+                }
+            },
+            computed: {
+                getMyName () {
+                    console.log("Computed - invoked");
+                    return this.myname.substring(0,1).toUpperCase() + this.myname.substring(1);
+                },
+                dataListComputed() {
+                    return this.datalist.filter(ele=>ele.indexOf(this.mytext)>-1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

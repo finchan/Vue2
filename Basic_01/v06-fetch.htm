@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <button @click="handleClick">Fetch Movies Info</button>
+        <ul>
+            <li v-for="data in dataList">
+                <h3>{{data.nm}}</h3>
+                <img :src="data.img"/>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data:{
+                dataList:[]
+            },
+            methods: {
+                handleClick () {
+                    fetch("./json/movies.json")
+                    .then(res=>res.json())
+                    .then(res=>{
+                        console.log(res);
+                        this.dataList = res.movieList;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
