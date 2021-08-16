@@ -17,7 +17,7 @@
             template:`
                 <div style="background-color: yellow;">
                     <button @click="handleback">Back</button>
-                    navbar
+                    navbar -- {{navbarname}}
                     <button>Home</button>
                     <child></child>
                     <navInternalComponent></navInternalComponent>
@@ -27,6 +27,11 @@
                     handleback() {
                         console.log("back");
                     }
+                },
+                data(){
+                    return {
+                        navbarname: 'navbarname'
+                    };
                 },
                 //定义局部组件
                 components: {
