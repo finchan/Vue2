@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <child @mycustomizedevent="handleData($event)"></child><br/>
+        ---
+        <br/>
+        {{valuePopulated}}<br/>
+        ------------------------------
+        <togglebutton @togglebuttonevent="responseToggleButton"></togglebutton>
+        <sidebar v-if="isShow"></sidebar>
+    </div>
+    <script>
+        Vue.component('child', {
+            template: `
+                <button @click="passDataToParent">子组件</button>
+            `,
+            data(){
+                return {
+                    childname: '用子组件状态更新父组件的状态'
+                };
+            },
+            methods: {
+                passDataToParent() {
+                    this.$emit('mycustomizedevent', this.childname); //分发事件，如果不传值，第二个参数省略
+                }
+            }
+        });
+        Vue.component('togglebutton', {
+            template: `
+                <div>
+                    <button @click="showOrHideSideBar">Toggle Button</button>
+                </div>
+            `, 
+            methods: {
+                showOrHideSideBar() {
+                    this.$emit('togglebuttonevent');
+                }
+            }
+        });
+        Vue.component('sidebar', {
+            template: `
+                <div style="background-color: yellow; width: 200px;">
+                    <ul>
+                        <li>1111111</li>
+                        <li>2222222</li>
+                        <li>3333333</li>
+                    </ul>
+                </div>
+            `
+        });
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                valuePopulated: '',
+                isShow: false
+            },
+            methods: {
+                handleData(obj) {
+                    this.valuePopulated = obj;
+                },
+                responseToggleButton() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

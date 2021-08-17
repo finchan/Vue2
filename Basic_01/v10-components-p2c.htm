@@ -11,6 +11,7 @@
         <navbar myname="List" :myshow="false"></navbar>
         <navbar myname="Home" :myshow="true"></navbar>
         <navbar :myname="parentData" :myshow="true"></navbar>
+        <navbar2 :myname2="propertyValidation" :myshow2="false"></navbar2>
     </div>
     <script>
         Vue.component('navbar', {
@@ -21,10 +22,22 @@
             `,
             props:['myname', 'myshow']//接收父组件传过来的属性值 (属性传值)
         });
+        Vue.component('navbar2', {
+            template: `
+                <div>
+                    NAVBAR2 -- {{myname2}} <button v-show="myshow2">BUTTON3</button>
+                </div>
+            `,
+            props: {
+                myname2: String,
+                myshow2: Boolean
+            }
+        });
         var vm = new Vue({
             el: "#box",
             data:{
-                parentData: '父组件的状态'
+                parentData: '父组件的状态',
+                propertyValidation: 'Property Validation'
             }         
         });
     </script>
