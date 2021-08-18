@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <weixinauthor></weixinauthor>
+        <weixinuser></weixinuser>
+    </div>
+    <script>
+        //中央事件总线
+        var bus = new Vue();
+
+        Vue.component("weixinauthor",{
+            template:`
+                <div style="background-color:yellow;">
+                    <input type="text" ref="mytext"/> <button @click="publishContent">Publish</button>
+                </div>
+            `,
+            methods: {
+                publishContent() {
+                    bus.$emit("weixinmessage", this.$refs.mytext.value);
+                }
+            }
+        });
+        
+        Vue.component("weixinuser", {
+            template: `
+                <div style="background-color: green;">
+                    微信用户
+                </div>
+            `,
+            data(){ //有办法修改这个组件的状态吗？
+                return {
+                    subscribingMsg: ""
+                }
+            },
+            mounted() {
+                console.log("生命周期函数 - 当组件DOM创建完成后，自动调用");
+                bus.$on("weixinmessage", (data)=>{
+                    console.log("订阅得到的消息 - ", data);
+                });
+            },
+        });
+        var vm = new Vue({
+            el: "#box"
+            
+        });
+    </script>
+</body>
+</html>
