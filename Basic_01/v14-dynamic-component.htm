@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <p>
+            <keep-alive>
+                <component :is="who"></component>
+            </keep-alive>
+        </p>
+        <footer>
+            <ul>
+                <li><a @click="who='home'">HOME</a></li>
+                <li><a @click="who='list'">LIST</a></li>
+                <li><a @click="who='shoppingcart'">SHOPPING CART</a></li>
+            </ul>
+        </footer>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                who:'home'
+            },
+            components: {
+                "home":{
+                    template:`
+                        <div>
+                            HOME: <input type="text"/>
+                        </div>
+                    `
+                },
+                "list":{
+                    template:`
+                        <div>
+                            LIST:
+                        </div>
+                    `
+                },
+                "shoppingcart":{
+                    template:`
+                        <div>
+                            SHOPPING CART
+                        </div>
+                    `
+                }
+            }
+        });
+    </script>
+</body>
+</html>

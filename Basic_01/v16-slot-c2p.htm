@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <togglebutton>
+            <button @click="isShow=!isShow">Toggle Button</button>
+        </togglebutton>
+        <sidebar v-if="isShow"></sidebar>
+    </div>
+    <script>
+        Vue.component('togglebutton', {
+            template: `
+                <div>
+                    <slot></slot>
+                </div>
+            `
+        });
+        Vue.component('sidebar', {
+            template: `
+                <div style="background-color: yellow; width: 200px;">
+                    <ul>
+                        <li>1111111</li>
+                        <li>2222222</li>
+                        <li>3333333</li>
+                    </ul>
+                </div>
+            `
+        });
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                // valuePopulated: '',
+                isShow: false
+            }
+        });
+    </script>
+</body>
+</html>
