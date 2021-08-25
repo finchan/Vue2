@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bounce-enter-active{
+                animation: bounce-in .5s;
+        }
+        .bounce-leave-active{
+            animation: bounce-in 1.5s reverse;
+        }
+        @keyframes bounce-in {
+            0%{
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100%{
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <button @click="isShow=!isShow">Click</button>
+        <transition name="bounce" mode="in-out">
+            <p v-if="isShow" key="1">111111</p>
+            <!--diff 算法，如果都是p或者都是div，key值相同则复用，无动画效果-->
+            <p v-else key="2">222222</div>
+        </transition>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#box",
+            data: {
+                isShow: false
+            }
+        });
+    </script>
+</body>
+</html>

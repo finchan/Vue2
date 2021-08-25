@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .myCssTransition-enter-active,.myCssTransition-leave-active{
+                transition: all 1.5s;
+            }
+            .myCssTransition-enter,.myCssTransition-leave-to{
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            .myCssKeyFrame-enter-active{
+                animation: bounce-in .5s;
+            }
+            .myCssKeyFrame-leave-active{
+                animation: bounce-in .5s reverse;
+            }
+            @keyframes bounce-in {
+                0%{
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+        </style>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="box">
+            <button @click="isShow=!isShow">Click</button>
+            <transition name="myCssTransition">
+                <div v-show="isShow">111111</div>
+            </transition>
+            <transition name="myCssKeyFrame">
+                <div v-show="isShow">222222</div>
+            </transition>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: "#box",
+                data: {
+                    isShow:false
+                }
+            });
+        </script>
+    </body>
+</html>
