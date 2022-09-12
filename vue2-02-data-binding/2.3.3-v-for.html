@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(item, index) in items" v-bind:key="item._id">
+          <h3>{{index}} - {{item.title}}</h3>
+          <p>{{index}} - {{item.description}}</p>
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="(value, key) in objectDemo">
+            {{key}} - {{value}}
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="n in 5">
+            {{n}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          items: [
+            { _id: 1, title: "title-1", description: "description-1" },
+            { _id: 2, title: "title-2", description: "description-2" },
+            { _id: 3, title: "title-3", description: "description-3" },
+            { _id: 4, title: "title-4", description: "description-4" },
+          ],
+          objectDemo: {
+            a: "a-value",
+            b: "b-value",
+            c: "c-value",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

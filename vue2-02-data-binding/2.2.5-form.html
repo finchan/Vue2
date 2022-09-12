@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+          <input type="text" v-model="message"/>
+          <span>Your input is : {{message}}</span>  <br>
+          <label><input type="radio" value="male" v-model="gender">男</label>
+          <label><input type="radio" value="female" v-model="gender">女</label>
+          <p>{{gender}}</p>
+          <input type="checkbox" v-model="checked"/>CheckBox<br/>
+          <span>Checked: {{checked}}</span>
+          <br>
+          <input type="checkbox" value="1" v-model="multiChecked">1
+          <input type="checkbox" value="2" v-model="multiChecked">2
+          <input type="checkbox" value="3" v-model="multiChecked">3
+          <p>MultiChecked: {{multiChecked.join("|")}}</p>
+          <select v-model="selected">
+            <option selected>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <span>Selected: {{selected}}</span>
+          <br>
+          <select v-model="multiSelected" multiple>
+            <option selected>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <br>
+          <span>MultiSelected: {{multiSelected.join("|")}}</span>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    message:'',
+                    gender:'',
+                    checked:false,
+                    multiChecked:[],
+                    selected:[],
+                    multiSelected:[]
+                }
+            })
+        </script>
+    </body>
+</html>

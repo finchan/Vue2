@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{firstName}}</p>
+            <p>{{lastName}}</p>
+            <p>{{fullName}}</p>
+            <p>&yen;{{price}}</p>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    firstName: 'Gavin',
+                    lastName: 'CLY',
+                    cents: 100
+                },
+                computed: {
+                    fullName: function() {
+                        return this.firstName + " " + this.lastName;
+                    },
+                    price: {
+                        //此时更改vm.price = 2，vm.cents会被更新为200，
+                        //在传递给后端时无需再手动转化一遍数据。
+                        set: function(newValue) {
+                            this.cents = newValue * 100
+                        },
+                        get: function() {
+                            return (this.cents / 100).toFixed(2)
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

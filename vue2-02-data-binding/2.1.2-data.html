@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{a}} - {{c}} - {{b}} --传入未作声明的变量会引发Vue警告
+        </div>
+        <script>
+            var data = {a:1,c:undefined}
+            var vm = new Vue({
+                el: '#app',
+                data: data
+            })
+            console.log(vm.$data === data)  //true
+            console.log(vm.a === data.a)    //true
+            vm.a = 3
+            console.log(data.a)             //3
+            data.a = 4
+            console.log(vm.a)               //4
+            vm.$data.b = 2
+            console.log(data)               //初始化后，无法做到双向绑定，也就是vm.b值是undefined
+        </script>
+    </body>
+</html>

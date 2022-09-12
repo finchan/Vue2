@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>123</p>
+        </div>
+        <script id="tpl" type="x-template">
+          <div class='wrapper'>
+            <p>This is a tpl from script tag</p>
+          </div>
+        </script>
+        <script>
+          var app = new Vue({
+            el: '#app',
+            template: '#tpl'
+          })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div style="background-color:#FCC" @click="saySelf('click from inner')" @click.self="saySelf('Click from self')">
+        <button @click="saySelf('button click')">Button</button>
+        <button @click.stop="saySelf('just button click')">Button</button>
+      </div>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          msg: 'Hello'
+        },
+        methods: {
+            saySelf(msg) {
+                alert(msg);
+            }
+        }
+      });
+    </script>
+  </body>
+</html>
