@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <div v-my-directive:console.log="content"></div>
+    </div>
+    <script>
+      Vue.directive("my-directive", {
+        bind: function(el, binding, vnode) {
+            var s = JSON.stringify
+            el.innerHTML = 
+                'name: ' + s(binding.name) + '<br>' + 
+                'newValue: ' + s(binding.value) + '<br>' +
+                'oldValue: ' + s(binding.oldValue) + '<br>' +
+                'expression: ' + s(binding.expression) + '<br>' +
+                'arg: ' + s(binding.arg) + '<br>' +
+                'modifiers: ' + s(binding.modifiers) + '<br>' +
+                'vnode: ' + Object.keys(vnode).join(', ')
+        }
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          content: 'There is the content'
+        },
+      });
+    </script>
+  </body>
+</html>

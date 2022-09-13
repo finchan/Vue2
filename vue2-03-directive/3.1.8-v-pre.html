@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <div v-pre>{{uncompiled}}</div>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          uncompiled: 'There is an uncompiled element'
+        }
+      });
+    </script>
+  </body>
+</html>
