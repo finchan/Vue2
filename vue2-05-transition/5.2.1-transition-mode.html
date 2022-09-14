@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <transition name="fade" mode="in-out">
+        <div>
+          <button @click="show=!show" v-if="show">on</button>
+          <button @click="show=!show" v-if="!show">off</button>
+        </div>
+      </transition>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show:true
+        }
+      });
+    </script>
+  </body>
+</html>

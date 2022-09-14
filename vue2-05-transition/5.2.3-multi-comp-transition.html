@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        A: <input type="radio" v-model="view" value="v-a"/>  
+        B: <input type="radio" v-model="view" value="v-b"/>
+      </div>
+      <transition name="component-fade" mode="out-in">
+        <component :is="view"></component>
+      </transition>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          view: 'v-a'
+        },
+        components: {
+          'v-a': {
+            template: '<div>Component A</div>'
+          },
+          'v-b': {
+            template: '<div>Component B</div>'
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
