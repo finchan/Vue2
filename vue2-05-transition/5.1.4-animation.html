@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="show = !show">TOGGLE</button>
+      <transition name="custom-classes-transition"
+                enter-active-class="animated tada"
+                leave-active-class="animated bounceOutRight">
+        <div v-if="show">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+             Mauris facilisis enim libero, at lacinia diam fermentum id. 
+             Pellentesque habitant morbi tristique senectus et netus.
+        </div>
+      </transition>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          show: true,
+        },
+      });
+    </script>
+  </body>
+</html>
