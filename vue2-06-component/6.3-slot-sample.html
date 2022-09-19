@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <todo-list>
+            <template #todo-item="{todo}">
+                <span v-if="todo.isCompleted">✓ </span>
+                {{todo.text}}
+            </template>
+        </todo-list>
+    </div>
+    <script>
+      Vue.component("todo-list", {
+        template: `
+                <ul>
+                    <li v-for="todo in filteredTodos" :key="todo.id">
+                        <slot name="todo-item" v-bind:todo="todo">
+                            <!--后备内容-->
+                            {{todo.text}}
+                        </slot>
+                    </li>
+                </ul>
+            `,
+        data: function () {
+          return {
+            filteredTodos: [
+              {
+                id: 1,
+                text: "Uncompleted TODO -1 ",
+                date: "",
+                category: "Reading",
+                isCompleted: false,
+              },
+              {
+                id: 2,
+                text: "Completed TODO -1 ",
+                date: "Sep 19, 2022",
+                category: "Reading",
+                isCompleted: true,
+              },
+              {
+                id: 3,
+                text: "Uncompleted TODO -2 ",
+                date: "",
+                category: "Listening",
+                isCompleted: false,
+              },
+              {
+                id: 4,
+                text: "Uncompleted TODO -3 ",
+                date: "",
+                category: "Reading",
+                isCompleted: false,
+              },
+            ],
+          };
+        }
+      });
+      var vm = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>
