@@ -23,21 +23,22 @@
         background: #e0e0e0;
       }
       .titles {
-        float:left;
+        float: left;
         width: 30%;
       }
       .contents {
-        float:right;
+        float: right;
         width: 70%;
       }
-      .li-background-color{
-        background: 
+      .li-background-color {
+        background: #ffffff;
+        list-style: none;
       }
-      .li-background-color.active {
-        
+      .li-background-color.selected {
+        background: #c46565;
       }
       .li-background-color:hover {
-        
+        background: #e0e0e0;
       }
     </style>
   </head>
@@ -50,8 +51,9 @@
       >
         {{tab.name}}
       </button>
-
-      <component :is="currentTab.component" class="tab"></component>
+      <keep-alive>
+        <component :is="currentTab.component" class="tab"></component>
+      </keep-alive>
     </div>
     <script>
       var tabs = [
@@ -62,18 +64,19 @@
               <div style="height: 50%">
                 <div class="titles">
                   <ul>
-                    <li :key="post.id" v-for="post in posts">{{post.title}}</li>
+                    <li @click="selectedPost = post" :key="post.id" v-for="post in posts" :class="['li-background-color', {selected: selectedPost == post}]">{{post.title}}</li>
                   </ul>
                 </div>
-                <div class="contents">
-                  <h1>{{posts[selected].title}}</h1>
-                  <div v-html="posts[selected].content"></div>  
+                <div class="contents" v-if="selectedPost">
+                  <h1>{{selectedPost.title}}</h1>
+                  <div v-html="selectedPost.content"></div>  
                 </div>
               </div>
             `,
             data: function () {
               return {
                 selected: 0,
+                selectedPost: null,
                 posts: [
                   {
                     id: 1,
