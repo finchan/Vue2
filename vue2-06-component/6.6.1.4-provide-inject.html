@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <parent>
+        <parent2>
+            <child></child>
+        </parent2>
+      </parent>
+    </div>
+    <script>
+      Vue.component('parent', {
+        data: function() {
+            return {
+                bar: 1
+            }
+        },
+        provide: {
+                foo: this.bar,
+                p2: 'parent'
+        },
+        template: `
+            <div>
+                <slot></slot>
+            </div>
+        `
+      })
+
+      Vue.component('parent2', {
+        data: function() {
+            return {
+                bar: 2
+            }
+        },
+        provide: function() {
+            return {
+                foo: this.bar,
+                p2: 'parent2'
+            }
+        },
+        template: `
+            <div>
+                <slot></slot>
+            </div>
+        `
+      })
+
+      Vue.component('child', {
+        inject: {
+            foo: {
+                from: 'p2',
+                default: '111'
+            }
+        },
+        data: function() {
+            return {
+                Dom: this.foo
+            }
+        },
+        template: `
+            <div>
+                <p>{{Dom}}</p>
+                <slot></slot>
+            </div>
+        `
+      })
+
+      var vm = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>
