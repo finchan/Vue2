@@ -7,10 +7,18 @@ import ComingSoon from '@/views/film/ComingSoon'
 import Cinema from '@/views/Cinema'
 import Center from '@/views/Center'
 import Detail from '@/views/Detail'
+import Login from '@/views/Login'
 // 注册路由
 Vue.use(Router)
 
-export default new Router({
+const auth = {
+  isLogin() {
+    return false;
+  }
+}
+
+const router = new Router({
+  mode: 'history',  //  default:hash或者显式的配置 mode:hash hash模式
   routes: [
     {
       path: '/film',
@@ -45,8 +53,29 @@ export default new Router({
       component: Detail
     },
     {
+      path: '/login',
+      component: Login
+    },
+    {
       path: '*',
       redirect: '/film'
     }
   ]
 })
+
+//全局守卫
+router.beforeEach((to, from, next) => {
+  if (to.path === '/center') {
+    console.log('检查是否登陆')
+    if (auth.isLogin()) {
+      //验证token - JWT
+      next();
+    } else {
+      next('/login')
+    }
+  } else {
+    next();
+  }
+})
+
+export default router
