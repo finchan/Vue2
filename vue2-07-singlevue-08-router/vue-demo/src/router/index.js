@@ -12,13 +12,13 @@ import Login from '@/views/Login'
 Vue.use(Router)
 
 const auth = {
-  isLogin() {
-    return false;
+  isLogin () {
+    return false
   }
 }
 
 const router = new Router({
-  mode: 'history',  //  default:hash或者显式的配置 mode:hash hash模式
+  mode: 'history', //  default:hash或者显式的配置 mode:hash hash模式
   routes: [
     {
       path: '/film',
@@ -63,18 +63,18 @@ const router = new Router({
   ]
 })
 
-//全局守卫
+// 全局守卫
 router.beforeEach((to, from, next) => {
   if (to.path === '/center') {
     console.log('检查是否登陆')
     if (auth.isLogin()) {
-      //验证token - JWT
-      next();
+      // 验证token - JWT
+      next()
     } else {
       next('/login')
     }
   } else {
-    next();
+    next()
   }
 })
 
