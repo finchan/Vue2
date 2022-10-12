@@ -33,7 +33,7 @@ import tabbar from '@/components/Tabbar'
 // Vue.component('sidebar', sidebar)
 
 // 下面是ES6导出的语法，相当于CommonJS的 module.exports
-export default{
+export default {
   data () {
     return {
       dataList: [],
@@ -62,6 +62,9 @@ export default{
 
 <style>
   li{
-    background-color: yellow;
+    list-style: none;
+  }
+  html{
+    height: 100%;
   }
 </style>

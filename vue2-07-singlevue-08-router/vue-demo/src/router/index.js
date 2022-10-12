@@ -65,17 +65,18 @@ const router = new Router({
 
 // 全局守卫
 router.beforeEach((to, from, next) => {
-  if (to.path === '/center') {
-    console.log('检查是否登陆')
-    if (auth.isLogin()) {
-      // 验证token - JWT
-      next()
-    } else {
-      next('/login')
-    }
-  } else {
-    next()
-  }
+  // if (to.path === '/center') {
+  //   console.log('检查是否登陆')
+  //   if (auth.isLogin()) {
+  //     // 验证token - JWT
+  //     next()
+  //   } else {
+  //     next('/login')
+  //   }
+  // } else {
+  //   next()
+  // }
+  next()
 })
 
 export default router
