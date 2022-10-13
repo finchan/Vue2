@@ -61,10 +61,13 @@ export default {
 </script>
 
 <style>
+  @import url('./assets/aliiconfont/iconfont.css');
   li{
     list-style: none;
   }
   html{
     height: 100%;
+    margin:0;
+    padding:0;
   }
 </style>

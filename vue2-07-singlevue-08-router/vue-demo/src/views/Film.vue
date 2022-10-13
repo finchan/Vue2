@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            轮播
+          <MovieSwiper></MovieSwiper>
         </div>
         <div>
             Film Header

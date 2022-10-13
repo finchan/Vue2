@@ -11,7 +11,7 @@ import Login from '@/views/Login'
 // 注册路由
 Vue.use(Router)
 
-const auth = {
+const auth = {  // eslint-disable-line
   isLogin () {
     return false
   }

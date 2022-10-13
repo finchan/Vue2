@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "400721",
+      "name": "film",
+      "font_class": "film",
+      "unicode": "e6f4",
+      "unicode_decimal": 59124
+    },
+    {
+      "icon_id": "748260",
+      "name": "center",
+      "font_class": "center",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "1555846",
+      "name": "cinema",
+      "font_class": "cinema",
+      "unicode": "e6c2",
+      "unicode_decimal": 59074
+    }
+  ]
+}

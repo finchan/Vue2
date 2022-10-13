@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-const auth = {
+const auth = {  // eslint-disable-line
   hasLogin: function () {
     return false
   }
