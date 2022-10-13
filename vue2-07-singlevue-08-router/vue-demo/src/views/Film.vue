@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-          <MovieSwiper></MovieSwiper>
+          <movie-swiper></movie-swiper>
         </div>
         <div>
             Film Header
@@ -9,3 +9,16 @@
         <router-view></router-view>
     </div>
 </template>
+<script>
+import MovieSwiper from '../components/MovieSwiper'
+export default{
+  data () {
+    return {
+
+    }
+  },
+  components: {
+    'movie-swiper': MovieSwiper
+  }
+}
+</script>
