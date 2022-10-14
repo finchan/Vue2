@@ -6,13 +6,13 @@
       <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
-          <img src="../assets/carousel/c1.jpg" class="swider-image"/>
+          <img src="../assets/carousel/c1.jpg" class="swiper-image"/>
         </div>
         <div class="swiper-slide">
-          <img src="../assets/carousel/c2.jpg" class="swider-image"/>
+          <img src="../assets/carousel/c2.jpg" class="swiper-image"/>
         </div>
         <div class="swiper-slide">
-          <img src="../assets/carousel/c3.jpg" class="swider-image"/>
+          <img src="../assets/carousel/c3.jpg" class="swiper-image"/>
         </div>
       </div>
       <!-- If we need pagination -->
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-import Swiper,{Navigation, Pagination, Scrollbar, Autoplay} from 'swiper'
+import Swiper, {Navigation, Pagination, Scrollbar, Autoplay} from 'swiper'
 import 'swiper/swiper-bundle.css'
 export default {
   mounted () {
@@ -36,20 +36,22 @@ export default {
   },
   methods: {
     movieSwiper: function () {
-      const swiper = new Swiper('.swiper', {
-        speed: 500,
-        spaceBetween: 200,
+      // eslint-disable-next-line no-new
+      new Swiper('.swiper', {
         autoplay: {
-          delay: 3000,
+          delay: 2000
         },
         modules: [Navigation, Pagination, Scrollbar, Autoplay],
+        pagination: {
+          el: '.swiper-pagination'
+        },
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         },
         scrollbar: {
-          el: ".swiper-scrollbar",
-          draggable: true,
+          el: '.swiper-scrollbar',
+          draggable: true
         }
       })
     }
@@ -63,7 +65,7 @@ export default {
   height: 300px;
   overflow: hidden;
 }
-.swider-image{
+.swiper-image{
   width:100%;
 }
 </style>

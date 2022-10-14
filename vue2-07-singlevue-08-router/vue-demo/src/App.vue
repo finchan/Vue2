@@ -1,22 +1,21 @@
 <template>
   <div>
-    Hello Vue
-    <input type='text' ref='mytext'/>
-    <button @click='handleClick'>Add</button>
-
-    <ul>
-      <li v-for='data in dataList' :key='data'>
-        {{data}}
-      </li>
-    </ul>
-    <!--使用组件-->
-    <navbar>
-      <button @click='isShow = !isShow'>Click</button>
-    </navbar>
-    <sidebar v-if='isShow'></sidebar>
-    <div style="border:1px ridge black">
-      <router-view></router-view>
+    <div class="practice">
+      Hello Vue
+      <input type='text' ref='mytext'/>
+      <button @click='handleClick'>Add</button>
+      <ul>
+        <li v-for='data in dataList' :key='data'>
+          {{data}}
+        </li>
+      </ul>
+      <!--使用组件-->
+      <navbar>
+        <button @click='isShow = !isShow'>Click</button>
+      </navbar>
     </div>
+    <sidebar v-if='isShow'></sidebar>
+    <router-view></router-view>
     <tabbar></tabbar>
   </div>
 </template>
@@ -65,9 +64,12 @@ export default {
   li{
     list-style: none;
   }
-  html{
+  html, body{
     height: 100%;
     margin:0;
     padding:0;
+  }
+  .practice{
+    display: none;
   }
 </style>

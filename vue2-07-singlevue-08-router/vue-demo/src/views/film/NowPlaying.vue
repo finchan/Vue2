@@ -1,6 +1,5 @@
 <template>
   <div id="nowplaying">
-    Now Playing
     <ul>
         <li v-for="data in dataList" :key="data.filmId" @click="handleChangePage(data.filmId)">
           <div id="left-image">

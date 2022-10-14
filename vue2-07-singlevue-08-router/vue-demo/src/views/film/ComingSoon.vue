@@ -1,5 +1,10 @@
 <template>
   <div>
-    Coming Soon
+    即将上映
   </div>
 </template>
+<style scoped>
+div{
+  clear: both;
+}
+</style>

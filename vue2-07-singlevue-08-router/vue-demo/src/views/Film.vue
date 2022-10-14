@@ -4,21 +4,31 @@
           <movie-swiper></movie-swiper>
         </div>
         <div>
-            Film Header
+          <film-header></film-header>
         </div>
         <router-view></router-view>
     </div>
 </template>
 <script>
 import MovieSwiper from '../components/MovieSwiper'
-export default{
+import FilmHeader from '../components/FilmHeader'
+export default {
   data () {
     return {
 
     }
   },
   components: {
+    'film-header': FilmHeader,
     'movie-swiper': MovieSwiper
+  },
+  mounted () {
+    window.onscroll = this.handleScroll
+  },
+  methods: {
+    handleScroll () {
+      console.log(document.documentElement.scrollTop)
+    }
   }
 }
 </script>
