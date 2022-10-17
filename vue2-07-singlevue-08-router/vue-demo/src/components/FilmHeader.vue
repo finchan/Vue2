@@ -7,6 +7,8 @@
 <style scoped>
   ul{
     display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   ul li {
     flex:1;
@@ -17,5 +19,13 @@
   .current-display{
     color: red;
     border-bottom: 2px solid darkred;
+  }
+  .fixed{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #FFF;
   }
 </style>

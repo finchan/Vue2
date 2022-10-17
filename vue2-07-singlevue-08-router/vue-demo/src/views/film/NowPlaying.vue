@@ -27,7 +27,7 @@ export default {
   },
   mounted () {
     axios({
-      url: 'https://m.maizuo.com/gateway?cityId=210200&pageNum=1&pageSize=10&type=1&k=6712065',
+      url: '/gateway?cityId=210200&pageNum=1&pageSize=10&type=1&k=6712065',
       headers: {
         'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.2.1","e":"16655427453748269498826753"}',
         'X-Host': 'mall.film-ticket.film.list'

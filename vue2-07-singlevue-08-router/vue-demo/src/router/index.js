@@ -50,7 +50,8 @@ const router = new Router({
     },
     {
       path: '/detail/:id', // 动态路由
-      component: Detail
+      component: Detail,
+      props: true
     },
     {
       path: '/login',

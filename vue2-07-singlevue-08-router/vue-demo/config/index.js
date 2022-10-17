@@ -16,7 +16,7 @@ module.exports = {
         changeOrigin: true
       },
       '/gateway': {
-        target: 'https://m.maoyan.com',
+        target: 'https://m.maizuo.com',
         changeOrigin: true
       }
     },
