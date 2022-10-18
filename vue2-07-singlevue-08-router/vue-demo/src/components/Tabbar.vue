@@ -14,10 +14,11 @@
     }
     nav {
       position: fixed;
+      margin: 0;
+      left: 0px;
       bottom: 0px;
       height: 50px;
       width: 100%;
-      border: 1px ridge #000;
       background-color:#EEEEEE
     }
     nav ul li {

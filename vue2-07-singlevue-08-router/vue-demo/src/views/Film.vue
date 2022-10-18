@@ -10,8 +10,8 @@
     </div>
 </template>
 <script>
-import MovieSwiper from '../components/MovieSwiper'
-import FilmHeader from '../components/FilmHeader'
+import MovieSwiper from './film/MovieSwiper'
+import FilmHeader from './film/FilmHeader'
 export default {
   data () {
     return {

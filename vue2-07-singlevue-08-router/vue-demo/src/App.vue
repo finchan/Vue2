@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   @import url('./assets/aliiconfont/iconfont.css');
   li{
     list-style: none;
