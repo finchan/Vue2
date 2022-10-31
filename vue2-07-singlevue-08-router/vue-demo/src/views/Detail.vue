@@ -22,12 +22,21 @@
 <script>
 import axios from 'axios'
 import swiper from './detail/DetailSwiper'
+// import bus from '@/bus'
 export default {
   props: ['id'],
   data () {
     return {
       filmInfo: null
     }
+  },
+  beforeMounted () {
+    // bus.$emit('maizuo', false)
+    this.$store.state.isTabbarshow = false
+  },
+  beforeDestroy () {
+    // bus.$emit('maizuo', true)
+    this.$store.state.isTabbarshow = true
   },
   mounted () {
     //  获取传入的参数

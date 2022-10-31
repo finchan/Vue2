@@ -16,7 +16,8 @@
     </div>
     <sidebar v-if='isShow'></sidebar>
     <router-view></router-view>
-    <tabbar></tabbar>
+<!--    <tabbar v-if="showTabbar"></tabbar>-->
+    <tabbar v-show="$store.state.isTabbarshow"></tabbar>
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import axios from 'axios'
 import navbar from './components/Navbar.vue'
 import sidebar from './components/Sidebar.vue'
 import tabbar from '@/components/Tabbar'
+// import bus from '@/bus' //  /index.js or index可以省略
 
 // 全局注册组件
 // Vue.component('navbar', navbar)
@@ -37,6 +39,7 @@ export default {
     return {
       dataList: [],
       isShow: false
+      // showTabbar: true
     }
   },
   methods: {
@@ -50,6 +53,12 @@ export default {
     'sidebar': sidebar,
     'tabbar': tabbar
   },
+  // beforeMount () {
+  //   bus.$on('maizuo', (data) => {
+  //     console.log('Get notified ', data)
+  //     this.showTabbar = data
+  //   })
+  // },
   mounted () {
     // Ajax放在这里做组件变更异步请求
     axios.get('/ajax/movieOnInfoList?token=').then(res => {

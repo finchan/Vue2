@@ -5,12 +5,14 @@ import Vue from 'vue'
 import App from './App'
 // 省略.js扩展名
 import router from './router/index'
+import store from './store'
 
 Vue.config.productionTip = false
 
 new Vue({ //eslint-disable-line
   el: '#app',
   router, // 简写 router: router
+  store, // 简写 store: store
   components: { App },
   template: '<App/>'
 })
