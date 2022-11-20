@@ -6,6 +6,10 @@ import App from './App'
 // 省略.js扩展名
 import router from './router/index'
 import store from './store'
+import AllA from './module/moduleA' //  全部导入
+import {A1 as myA1, A2} from './module/moduleB' //  只导入某几个接口
+
+console.log(AllA, myA1, A2)
 
 Vue.config.productionTip = false
 

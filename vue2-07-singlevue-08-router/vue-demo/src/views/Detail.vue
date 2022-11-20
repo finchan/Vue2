@@ -22,6 +22,7 @@
 <script>
 import axios from 'axios'
 import swiper from './detail/DetailSwiper'
+import {HIDE_TABBAR_MUTATION, SHOW_TABBAR_MUTATION} from '@/type'
 // import bus from '@/bus'
 export default {
   props: ['id'],
@@ -30,13 +31,18 @@ export default {
       filmInfo: null
     }
   },
-  beforeMounted () {
+  beforeMount () {
     // bus.$emit('maizuo', false)
-    this.$store.state.isTabbarshow = false
+    // this.$store.state.isTabbarshow = false
+    //  第一个参数就是Vuex的mutations的名字
+    // this.$store.commit('HideMaizuoTabbar', false)
+    this.$store.commit(HIDE_TABBAR_MUTATION, false)
   },
   beforeDestroy () {
     // bus.$emit('maizuo', true)
-    this.$store.state.isTabbarshow = true
+    // this.$store.state.isTabbarshow = true
+    // this.$store.commit('ShowMaizuoTabbar', true)
+    this.$store.commit(SHOW_TABBAR_MUTATION, true)
   },
   mounted () {
     //  获取传入的参数

@@ -17,7 +17,8 @@
     <sidebar v-if='isShow'></sidebar>
     <router-view></router-view>
 <!--    <tabbar v-if="showTabbar"></tabbar>-->
-    <tabbar v-show="$store.state.isTabbarshow"></tabbar>
+<!--    <tabbar v-show="$store.state.isTabbarshow"></tabbar>-->
+    <tabbar v-show="isTabbarshow"></tabbar>
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import axios from 'axios'
 import navbar from './components/Navbar.vue'
 import sidebar from './components/Sidebar.vue'
 import tabbar from '@/components/Tabbar'
+import {mapState} from 'vuex' //  mapState是ES6的导出功能
 // import bus from '@/bus' //  /index.js or index可以省略
 
 // 全局注册组件
@@ -52,6 +54,15 @@ export default {
     'navbar': navbar,
     'sidebar': sidebar,
     'tabbar': tabbar
+  },
+  // computed: {
+  //   isTabbarshow () {
+  //     return this.$store.state.isTabbarshow
+  //   }
+  // },
+  // computed: mapState(['isTabbarshow']), //  导出多个属性用逗号分隔，这里只能用一个
+  computed: {
+    ...mapState(['isTabbarshow']) //  ES6展开合并运算符
   },
   // beforeMount () {
   //   bus.$on('maizuo', (data) => {
